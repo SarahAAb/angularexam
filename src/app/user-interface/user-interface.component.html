@@ -1,0 +1,100 @@
+<!-- Start Country List -->
+<div class="container-fluid">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" class="form-control" placeholder="Country Name" #txtname>
+  </div>
+  <div>
+    <input type="button" class="btn btn-dark mb-3" value="Search" (click)="Search()">
+  </div>
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+
+        
+       <th>
+Code
+</th>
+<th>
+    Name
+</th>
+<th>
+    Action
+</th>
+</tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of countryli">
+            <td>
+{{item.code}}
+            </td>
+            <td>
+{{item.name}}
+            </td>
+            <td>
+<a (click)="loadCity(item.id)">Cities</a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  <!-- End Country List -->
+
+  <!-- New Country -->
+  <form [formGroup]="form">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Code</label>
+    <input type="text" class="form-control" placeholder="Country Code" formControlName="code">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" class="form-control" placeholder="Country Name" formControlName="name">
+  </div>
+  <div>
+    <input type="button" class="btn btn-dark mb-3" value="Save" (click)="OnSave()">
+  </div>
+  </form>
+  <!-- End New Country -->
+  <!--Start City List -->
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+<th>
+    Name
+</th>
+<th>
+    Action
+</th>
+</tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of cityli">
+            <td>
+{{item.name}}
+            </td>
+            <td>
+<a (click)="Delete(item.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  <!-- End City List -->
+  <!-- New City -->
+  <form [formGroup]="forms">
+  <div class="mb-3 mt-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" class="form-control" placeholder="Country Name" formControlName="name">
+  </div>
+  <div>
+    <label for="exampleFormControlInput1" class="form-label">Country</label>
+
+    <select class="form-select" aria-label="Default select example" formControlName="countryId">
+        <option *ngFor="let item of countryli" [value]="item.id">{{item.name}}</option>
+      </select>
+      
+  </div>
+  <div>
+    <input type="button" class="btn btn-dark mb-3" value="Save" (click)="OnSaveCity()">
+  </div>
+
+<form>
+<!--End New City -->
